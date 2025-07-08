@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "datatables.net-dt/css/dataTables.dataTables.min.css";
+@import "../../node_modules/simplebar/dist/simplebar.css";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source "../views";
+/* @theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+} */
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+}
+
+.simplebar-primary .simplebar-scrollbar::before {
+    background-color: #1e45f3!important;
+
+    width: 8px;
+    height: 70px;
+    border-radius: 9999px;
+}

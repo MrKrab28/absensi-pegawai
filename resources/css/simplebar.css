@@ -1,0 +1,6 @@
+.simplebar-primary .simplebar-scrollbar:before {
+  background-color: #4f46e5;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+}
