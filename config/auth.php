@@ -36,9 +36,17 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'pegawai' => [
+            'driver' => 'session',
+            'provider' => 'pegawais',
         ],
     ],
 
@@ -63,6 +71,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'pegawais' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Pegawai::class),
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
         // 'users' => [
