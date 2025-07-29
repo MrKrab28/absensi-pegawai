@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,12 @@ return new class extends Migration
             $table->string('password');
             $table->timestamps();
         });
+
+        $admin = new Admin();
+        $admin->nama = 'Admin';
+        $admin->email = 'admin@mail';
+        $admin->password = bcrypt('123');
+        $admin->save();
     }
 
     /**

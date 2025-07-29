@@ -14,13 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
            RedirectIfAuthenticated::redirectUsing(function (){
             if (Auth::guard('admin')->check()){
-                return route('admin.dashabord');
+                return route('admin.dashboard');
             }
-            elseif (Auth::guard('web')->check()){
-                return route('pegawai.dashabord');
+            elseif (Auth::guard('pegawai')->check()){
+                return route('pegawai.dashboard');
             }
             elseif(Auth::guard('user')->check()){
-                return route('user.dashabord');
+                return route('user.dashboard');
             }
             else{
                 Auth::logout();

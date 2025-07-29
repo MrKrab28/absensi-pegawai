@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::middleware(['guest:admin,pegawai,user'])->group(function () {
+    Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+    
+});
+Route::get('/dashboard', function () {
     return view('pages.admin.dashboard');
 });
 
