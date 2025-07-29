@@ -8,6 +8,8 @@ Route::middleware(['guest:admin,pegawai,user'])->group(function () {
     Route::post('/auth', [AuthController::class, 'authenticate'])->name('authenticate');
 
 });
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:admin,pegawai,user');
 // Route::get('/dashboard', function () {
 //     return view('pages.admin.dashboard');
 // });

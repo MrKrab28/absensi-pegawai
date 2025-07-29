@@ -30,4 +30,14 @@ class AuthController extends Controller
 
         return redirect()->back()->with('error', 'Email atau password salah');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        Auth::guard('pegawai')->logout();
+        Auth::guard('user')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }
