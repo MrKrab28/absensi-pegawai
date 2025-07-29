@@ -16,12 +16,18 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin.dashabord');
-        } elseif (Auth::guard('pegawai')->attempt($credentials)) {
-            return redirect()->route('pegawai.dashabord');
-        } elseif (Auth::guard('user')->attempt($credentials)) {
-            return redirect()->route('user.dashabord');
+            $request->session()->regenerate();
+            return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('login');
+        if (Auth::guard('pegawai')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('pegawai.dashboard');
+        }
+        if (Auth::guard('user')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('user.dashboard');
+        }
+
+        return redirect()->back()->with('error', 'Email atau password salah');
     }
 }
