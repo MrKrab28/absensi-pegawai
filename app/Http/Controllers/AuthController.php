@@ -33,9 +33,12 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('admin')->logout();
-        Auth::guard('pegawai')->logout();
-        Auth::guard('user')->logout();
+        foreach (['admin', 'pegawai', 'user'] as $guard) {
+            if (Auth::guard($guard)->check()) {
+                Auth::guard($guard)->logout();
+            }
+        }
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
