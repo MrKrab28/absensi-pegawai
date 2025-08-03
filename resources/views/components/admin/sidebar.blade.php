@@ -10,14 +10,14 @@
             <nav class=" w-full flex flex-col sidebar-nav">
                 <ul id="sidebarnav" class="text-dark text-lg">
                     @foreach (config('menu') as $menuKey => $menuGroup)
-                        <li class="text-xs font-bold pb-0 px-0 mt-2 mb-0" data-key="t-{{ Str::slug($menuGroup['title']) }}">
+                        <li class="text-sm font-bold pb-2 px-0 mt-2 mb-0"
+                            data-key="t-{{ Str::slug($menuGroup['title']) }}">
                             <span>{{ $menuGroup['title'] }}</span>
                         </li>
                         @foreach ($menuGroup['items'] as $item)
                             @if (isset($item['submenu']))
                                 <li class="hs-accordion sidebar-item" id="ui-accordion">
-                                    <a href="#"
-                                        class="hs-accordion-toggle sidebar-link dropdown-menu-link">
+                                    <a href="#" class="hs-accordion-toggle sidebar-link dropdown-menu-link">
                                         <x-icon name="{{ $item['icon'] }}" />
 
                                         <span class="hide-menu">{{ $item['label'] }}</span>
@@ -50,8 +50,7 @@
                                 </li>
                             @else
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link @if (request()->segment(2) == $item['route-active']) @endif gap-3 py-3 px-3 rounded-md w-full flex items-center justify-between hover:text-primary hover:bg-primary/15"
-
+                                    <a class="sidebar-link @if (request()->segment(2) == $item['route-active'])  @endif gap-3 py-3 px-3 rounded-md w-full flex items-center justify-between hover:text-primary hover:bg-primary/15"
                                         href="{{ isset($item['route-name']) ? route($item['route-name']) : '#' }}">
                                         <span class="flex gap-3 items-center">
                                             <x-icon name="{{ $item['icon'] }}" />

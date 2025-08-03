@@ -43,7 +43,7 @@
                     <div class="container full-container py-3 px-0 flex flex-col gap-6">
                         {{ $slot }}
                         <footer>
-                           
+
                         </footer>
                     </div>
 
