@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Repositories\PegawaiRepository;
+use App\Http\Repositories\PegawaiRepository;
 
 class PegawaiService
 {
