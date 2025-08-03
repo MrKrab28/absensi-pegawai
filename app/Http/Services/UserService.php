@@ -20,7 +20,7 @@ class UserService
 
     public function find($id)
     {
-        return $this->UserRepository->find($id);
+        return $this->UserRepository->getById($id);
     }
 
     public function create(array $data)

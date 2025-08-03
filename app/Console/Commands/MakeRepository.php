@@ -58,7 +58,7 @@ class {$name}Repository
         return {$name}::all();
     }
 
-    public function find(\$id)
+    public function getById(\$id)
     {
         return {$name}::findOrFail(\$id);
     }
@@ -106,7 +106,7 @@ class {$name}Service
         return \$this->{$name}Repository->getAll();
     }
 
-    public function find(\$id)
+    public function getById(\$id)
     {
         return \$this->{$name}Repository->find(\$id);
     }

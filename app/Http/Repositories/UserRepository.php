@@ -11,21 +11,28 @@ class UserRepository
         return User::all();
     }
 
-    public function find($id)
+    public function getById($id)
     {
-        return User::findOrFail($id);
+        return User::find($id);
     }
 
-    public function create(array $data)
+    public function create($data)
     {
+        $data['password'] = bcrypt($data['password']);
         return User::create($data);
     }
 
-    public function update($id, array $data)
+    public function update($id, $data)
     {
-        $item = User::findOrFail($id);
-        $item->update($data);
-        return $item;
+        if (array_key_exists('password', $data)) {
+            if ($data['password']) {
+                $data['password'] = bcrypt($data['password']);
+            } else {
+                unset($data['password']);
+            }
+        }
+
+        return User::find($id)->update($data);
     }
 
     public function delete($id)
