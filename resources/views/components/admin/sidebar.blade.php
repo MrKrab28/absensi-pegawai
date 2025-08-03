@@ -1,16 +1,16 @@
 <aside id="application-sidebar-brand"
     class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed lg:top-[0px] top-0 with-vertical h-screen z-[999] flex-shrink-0 border-r-[1px] w-[270px] border-gray-400/20  bg-white left-sidebar   transition-all duration-300">
-    <div class="p-5">
+    <div class="pl-8 pr-8 pb-5 pt-8 px-0 ">
         <a href="{{ route('admin.dashboard') }}" class="text-nowrap">
-            <img src="./assets/images/logos/dark-logo.svg" alt="Logo-Dark" />
+            <img src="{{ asset('assets/images/logos/logo-text.png') }}" alt="Logo-Dark" />
         </a>
     </div>
     <div data-simplebar class="h-full overflow-auto simplebar-primary">
-        <div class="px-6 mt-8">
+        <div class="px-6 mt-0">
             <nav class=" w-full flex flex-col sidebar-nav">
                 <ul id="sidebarnav" class="text-dark text-lg">
                     @foreach (config('menu') as $menuKey => $menuGroup)
-                        <li class="text-xs font-bold pb-4 mt-8 mb-0" data-key="t-{{ Str::slug($menuGroup['title']) }}">
+                        <li class="text-xs font-bold pb-0 px-0 mt-2 mb-0" data-key="t-{{ Str::slug($menuGroup['title']) }}">
                             <span>{{ $menuGroup['title'] }}</span>
                         </li>
                         @foreach ($menuGroup['items'] as $item)
