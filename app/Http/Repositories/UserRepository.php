@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Http\Repositories;
 
 use App\Models\User;
 
@@ -24,7 +24,7 @@ class UserRepository
 
     public function update($id, $data)
     {
-     
+
         return User::find($id)->update($data);
     }
 

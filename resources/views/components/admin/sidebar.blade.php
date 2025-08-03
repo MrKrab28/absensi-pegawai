@@ -1,7 +1,7 @@
 <aside id="application-sidebar-brand"
     class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed lg:top-[0px] top-0 with-vertical h-screen z-[999] flex-shrink-0 border-r-[1px] w-[270px] border-gray-400/20  bg-white left-sidebar   transition-all duration-300">
     <div class="p-5">
-        <a href="../" class="text-nowrap">
+        <a href="{{ route('admin.dashboard') }}" class="text-nowrap">
             <img src="./assets/images/logos/dark-logo.svg" alt="Logo-Dark" />
         </a>
     </div>
@@ -16,8 +16,10 @@
                         @foreach ($menuGroup['items'] as $item)
                             @if (isset($item['submenu']))
                                 <li class="hs-accordion sidebar-item" id="ui-accordion">
-                                    <a href="#cards" class="hs-accordion-toggle sidebar-link dropdown-menu-link">
+                                    <a href="#"
+                                        class="hs-accordion-toggle sidebar-link dropdown-menu-link">
                                         <x-icon name="{{ $item['icon'] }}" />
+
                                         <span class="hide-menu">{{ $item['label'] }}</span>
                                         <span class="hide-menu ms-auto">
                                             <x-icon name="chevron-down"
@@ -35,7 +37,7 @@
                                                         href="https://bootstrapdemos.adminmart.com/modernize-tailwind-pro/dist/main/ui-cards.html">
                                                         <span class="flex gap-2 items-center ">
                                                             <x-icon name="point" />
-                                                            <span class="hide-menu">{{ $submenu['label'] }}</span>
+                                                            <span class="hide-menu">{{ $submenu['label'] }}</span>dasads
 
                                                         </span>
                                                         <span
@@ -48,14 +50,14 @@
                                 </li>
                             @else
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link gap-3 py-3 px-3 rounded-md w-full flex items-center justify-between hover:text-primary hover:bg-primary/15"
-                                        target="_blank"
-                                        href="https://bootstrapdemos.adminmart.com/modernize-tailwind-pro/dist/main/index5.html">
+                                    <a class="sidebar-link @if (request()->segment(2) == $item['route-active']) @endif gap-3 py-3 px-3 rounded-md w-full flex items-center justify-between hover:text-primary hover:bg-primary/15"
+
+                                        href="{{ isset($item['route-name']) ? route($item['route-name']) : '#' }}">
                                         <span class="flex gap-3 items-center">
                                             <x-icon name="{{ $item['icon'] }}" />
                                             <span>{{ $item['label'] }}</span>
                                         </span>
-                                       
+
                                     </a>
                                 </li>
                             @endif

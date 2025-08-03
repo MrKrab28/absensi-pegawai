@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Repositories\UserRepository;
+use App\Http\Repositories\UserRepository;
+
 
 class UserService
 {
@@ -18,7 +19,7 @@ class UserService
         return $this->UserRepository->getAllUser();
     }
 
-    public function find($id)
+    public function getById($id)
     {
         return $this->UserRepository->getById($id);
     }

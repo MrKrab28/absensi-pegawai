@@ -8,7 +8,7 @@ return [
                 'route-active' => 'dashboard',
                 'label' => 'Dashboard',
                 'icon' => 'layout-dashboard',
-                'route-name' => '#',
+                'route-name' => 'admin.dashboard',
 
             ]
         ]
@@ -20,31 +20,31 @@ return [
         'title' => 'Master',
         'items' => [
             [
-                'route-active' => 'user',
+                'route-active' => 'users',
                 'label' => 'Users',
                 'icon' => 'users',
-                'route-name' => '#',
+                'route-name' => 'admin.user',
 
             ],
             [
                 'route-active' => 'category',
                 'label' => 'Category',
                 'icon' => 'cpu',
-                'route-name' => '#',
+                'route-name' => null,
 
             ],
             [
                 'route-active' => 'course',
                 'label' => 'Course',
                 'icon' => 'book-2',
-                'route-name' => '#',
+                'route-name' => null,
 
             ],
             [
                 'route-active' => 'materi',
                 'label' => 'Modul',
                 'icon' => 'book',
-                'route-name' => '#',
+                'route-name' => null,
 
             ],
         ]
@@ -59,22 +59,22 @@ return [
                 'route-active' => 'roadmap.*',
                 'label' => 'Roadmap',
                 'icon' => 'share',
-                'route-name' => 'roadmap.index',
+                // 'route-name' => '',
                 'submenu' => [
                     [
                         'route-active' => 'roadmap.frontend',
                         'label' => 'Frontend',
-                        'route-name' => 'roadmap.frontend',
+                        'route-name' => 'admin.user',
                     ],
                     [
                         'route-active' => 'roadmap.backend',
                         'label' => 'Backend',
-                        'route-name' => 'roadmap.backend',
+                        'route-name' => 'admin.user',
                     ],
                     [
                         'route-active' => 'roadmap.devops',
                         'label' => 'DevOps',
-                        'route-name' => 'roadmap.devops',
+                        'route-name' => 'admin.user',
                     ],
                 ]
             ],
