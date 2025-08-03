@@ -6,9 +6,9 @@ use App\Models\User;
 
 class UserRepository
 {
-    public function getAll()
+    public function getAllUser()
     {
-        return User::all();
+        return User::select('id', 'nama', 'email')->get();
     }
 
     public function getById($id)
@@ -18,20 +18,13 @@ class UserRepository
 
     public function create($data)
     {
-        $data['password'] = bcrypt($data['password']);
+
         return User::create($data);
     }
 
     public function update($id, $data)
     {
-        if (array_key_exists('password', $data)) {
-            if ($data['password']) {
-                $data['password'] = bcrypt($data['password']);
-            } else {
-                unset($data['password']);
-            }
-        }
-
+     
         return User::find($id)->update($data);
     }
 

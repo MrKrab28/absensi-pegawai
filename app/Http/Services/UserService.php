@@ -15,7 +15,7 @@ class UserService
 
     public function getAll()
     {
-        return $this->UserRepository->getAll();
+        return $this->UserRepository->getAllUser();
     }
 
     public function find($id)
@@ -25,11 +25,21 @@ class UserService
 
     public function create(array $data)
     {
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
         return $this->UserRepository->create($data);
     }
 
     public function update($id, array $data)
     {
+        if (array_key_exists('password', $data)) {
+            if ($data['password']) {
+                $data['password'] = bcrypt($data['password']);
+            } else {
+                unset($data['password']);
+            }
+        }
         return $this->UserRepository->update($id, $data);
     }
 
