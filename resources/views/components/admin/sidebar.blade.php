@@ -10,6 +10,7 @@
             <img src="{{ asset('assets/images/logos/logo-text.png') }}" alt="Logo-Dark" />
         </a>
     </div>
+  
     <div data-simplebar class="h-full overflow-auto simplebar-primary">
         <div class="px-6 mt-0">
             <nav class=" w-full flex flex-col sidebar-nav">
