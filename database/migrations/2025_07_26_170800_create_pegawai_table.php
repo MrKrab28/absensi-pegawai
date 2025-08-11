@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->date('tgl_lahir');
             $table->enum('jk', ['Pria', 'Wanita']);
-            $table->string('Alamat');
+            $table->string('alamat');
             $table->foreignId('department_id');
             $table->foreignId('jabatan_id');
             $table->foreignId('work_type_id');

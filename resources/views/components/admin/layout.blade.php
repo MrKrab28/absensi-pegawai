@@ -12,6 +12,8 @@
     {{-- <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" /> --}}
     {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}" />
+
+    @stack('styles')
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -68,6 +70,8 @@
 
     {{-- <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script> --}}
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

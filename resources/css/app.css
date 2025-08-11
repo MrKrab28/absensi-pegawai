@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "datatables.net-dt/css/dataTables.dataTables.min.css";
+@import "../../node_modules/datatables.net-dt/css/dataTables.dataTables.min.css";
 @import "../../node_modules/simplebar/dist/simplebar.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -30,3 +30,6 @@ body {
 .card {
     @apply bg-white border border-gray-200 shadow-2xs rounded-xl p-4 md:p-5;
 }
+/* @import "~my-datatables-bs4-scoped/dist/css/dataTables.bootstrap4.min.css"; */
+
+/* Prefix Scope untuk DataTable */
