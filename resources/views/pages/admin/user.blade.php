@@ -54,8 +54,8 @@
                     </thead>
                     <tbody id="tableBody">
                         @foreach ($users as $user)
-                            <tr class="bg-white border-b border-gray-200 dark:bg-gray-500 dark:border-gray-400"
-                                hover:bg-gray-100>
+                            <tr class="bg-white border-b border-gray-200 dark:bg-gray-500 dark:border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                hover:bg-gray-100 dark:hover:bg-gray-600>
                                 <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ $user->nama }}
                                 </td>
                                 <td class="px-6 py-4">{{ $user->email }}</td>

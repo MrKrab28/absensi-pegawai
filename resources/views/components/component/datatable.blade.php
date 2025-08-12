@@ -1,4 +1,4 @@
-@props(['data'])
+
 <div class="card">
     <div class="overflow-x-auto p-4">
         {{-- <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow"> --}}
