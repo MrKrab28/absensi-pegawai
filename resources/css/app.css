@@ -69,7 +69,41 @@ body {
 .col-md-12 {
     @apply w-full md:w-full px-2;
 }
+thead {
+    @apply text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+}
 
+th {
+    @apply px-6 py-3;
+}
+
+/* Baris tabel */
+tbody tr {
+    @apply bg-white border-b border-gray-200
+           dark:bg-gray-500 dark:border-gray-400
+           hover:bg-gray-100 dark:hover:bg-gray-600
+           transition-colors duration-200;
+}
+
+/* Sel tabel */
+td {
+    @apply px-6 py-4;
+}
+
+/* Sel tabel khusus bold */
+td.bold {
+    @apply font-medium text-gray-900 dark:text-white;
+}
+
+/* Tambahan: agar tabel responsif */
+.table-container {
+    @apply relative overflow-x-auto;
+}
+
+/* Tambahan: tombol umum */
+.btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded-md shadow;
+}
 /* @import "~my-datatables-bs4-scoped/dist/css/dataTables.bootstrap4.min.css"; */
 
 /* Prefix Scope untuk DataTable */

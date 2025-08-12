@@ -5,7 +5,7 @@ import "preline";
 import "./bootstrap";
 // import './bootstrap';
 import "../../public/assets/js/sidebarmenu";
-
+import 'flowbite';
 import "./sweetalert";
 
 import "./simplebar";
