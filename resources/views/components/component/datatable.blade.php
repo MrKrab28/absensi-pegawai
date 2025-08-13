@@ -14,12 +14,11 @@
     <div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-2">
         <div class="flex items-center gap-2">
             <!-- Entries per page -->
-            <div class="flex items-center gap-2">
-                <label for="entriesPerPage" class="text-gray-700 dark:text-gray-300 text-sm">Entries per
-                    page</label>
+            <div class="flex items-center gap-1">
+                <label for="entriesPerPage" class="text-gray-700 dark:text-gray-300 text-sm">Show</label>
                 <div class="relative">
                     <select id="entriesPerPage"
-                        class="appearance-none border border-gray-300 text-sm rounded-md pl-2 pr-8 py-1 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="appearance-none border border-gray-300 text-sm rounded-md pl-1 pr-1 py-1 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="5">5</option>
                         <option value="10" selected>10</option>
                         <option value="25">25</option>
@@ -31,12 +30,13 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                 </svg> --}}
                 </div>
+                 <label for="entriesPerPage" class="text-gray-700 dark:text-gray-300 text-sm">entries</label>
             </div>
         </div>
 
         <!-- Search -->
         <input type="text" id="searchInput" placeholder="Search..."
-            class="w-48 px-2 py-1 text-sm border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            class="w-60 mt-2 me-2 px-2 py-1 text-sm border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
 
     <!-- Table -->
@@ -46,7 +46,7 @@
 
 <!-- Pagination -->
 <div class="flex flex-col sm:flex-row justify-between items-center mt-4 gap-2">
-    <div class="text-sm text-gray-600 dark:text-gray-300" id="tableInfo"></div>
+    <div class="text-sm text-gray-600 dark:text-gray-300 ms-5 me-5"  id="tableInfo"></div>
     <div id="paginationControls" class="flex gap-1"></div>
 </div>
 {{-- </div> --}}
