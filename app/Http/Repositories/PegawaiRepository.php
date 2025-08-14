@@ -11,7 +11,7 @@ class PegawaiRepository
         return Pegawai::all();
     }
 
-    public function find($id)
+    public function getById($id)
     {
         return Pegawai::findOrFail($id);
     }

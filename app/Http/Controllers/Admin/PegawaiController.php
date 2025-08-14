@@ -2,20 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\PegawaiService;
+use App\Models\User;
 
 class PegawaiController extends Controller
 {
+    protected $pegawaiService;
+
+    public function __construct(PegawaiService $pegawaiService)
+    {
+        $this->pegawaiService = $pegawaiService;
+    }
     public function index(){
-        return view('pages.admin.pegawai');
+
+        return view('pages.admin.pegawai', [
+            'pegawais' => $this->pegawaiService->getAll()
+        ]);
     }
 
-    public function create(){
-        return view('pages.admin.pegawai-create');
+    public function store(Request $request){
+        $data = $request->all();
+        $this->pegawaiService->create($data);
+        return redirect()->back()->with('success', 'Pegawai berhasil ditambahkan');
     }
 
-    public function edit(){
+    public function edit(User $user){
+        $data = $this->pegawaiService->getById($user);
         return view('pages.admin.pegawai-edit');
     }
 

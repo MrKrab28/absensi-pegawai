@@ -16,9 +16,7 @@
              </li>
          </ul>
          <div class="flex items-center gap-4">
-             <a href="https://adminmart.com/product/modernize-tailwind-nextjs-dashboard-template/?ref=56#product-demo-section"
-                 target="_blank" class="btn font-medium hover:bg-blue-700/80 py-2" aria-current="page">Check Pro
-                 Template</a>
+            <p class="text-dark text-sm font-semibold" >{{ auth()->user()->nama }}</p>
 
 
              <div class="m-1 hs-dropdown [--trigger:hover] relative inline-flex">

@@ -18,18 +18,29 @@ class PegawaiService
         return $this->PegawaiRepository->getAll();
     }
 
-    public function find($id)
+    public function getById($id)
     {
-        return $this->PegawaiRepository->find($id);
+        return $this->PegawaiRepository->getById($id);
     }
 
-    public function create(array $data)
+    public function create( array $data)
     {
+         if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
         return $this->PegawaiRepository->create($data);
     }
 
     public function update($id, array $data)
     {
+         if (array_key_exists('password', $data)) {
+            if ($data['password']) {
+                $data['password'] = bcrypt($data['password']);
+            } else {
+                unset($data['password']);
+            }
+        }
         return $this->PegawaiRepository->update($id, $data);
     }
 
