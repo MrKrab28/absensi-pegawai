@@ -31,23 +31,39 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        try {
+            $data = $request->validate([
+                'nama' => 'required',
+                'email' => 'required|unique:users,email',
+                'password' => 'required'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // cek jika error karena email sudah ada
+            if ($e->validator->errors()->has('email')) {
+                return redirect()->back()->with('error', 'Email sudah terdaftar');
+            }
+            throw $e; // error lain biarkan default
+        }
+
         $this->userService->create($data);
-        return back()->with('success', 'User berhasil ditambahkan');
+        return redirect()->back()->with('success', 'User berhasil ditambahkan');
     }
 
-    public function edit(User $user){
+    public function edit(User $user)
+    {
         $data = $this->userService->getById($user);
         return view('pages.admin.user-edit', $data);
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user)
+    {
         $data = $request->all();
         $this->userService->update($user->id, $data);
         return redirect()->back()->with('success', 'User berhasil diupdate');
     }
 
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $this->userService->delete($user->id);
         return redirect()->back()->with('success', 'User berhasil dihapus');
     }

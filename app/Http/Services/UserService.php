@@ -3,7 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Repositories\UserRepository;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -27,7 +27,7 @@ class UserService
     public function create(array $data)
     {
         if (!empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
+            $data['password'] =  Hash::make($data['password']);
         }
         return $this->UserRepository->create($data);
     }
@@ -36,7 +36,7 @@ class UserService
     {
         if (array_key_exists('password', $data)) {
             if ($data['password']) {
-                $data['password'] = bcrypt($data['password']);
+                $data['password'] = Hash::make($data['password']);
             } else {
                 unset($data['password']);
             }

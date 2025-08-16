@@ -54,6 +54,7 @@
 
             </div>
         </div>
+
         <!--end of project-->
     </main>
 
@@ -72,6 +73,34 @@
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
     @stack('scripts')
+    @if (Session::has('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: "{{ Session::get('success') }}",
+
+                    // background: '#212529',
+
+
+                });
+            });
+        </script>
+    @endif
+    @if (Session::has('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "{{ Session::get('error') }}",
+
+                });
+            });
+        </script>
+    @endif
 </body>
 
 </html>

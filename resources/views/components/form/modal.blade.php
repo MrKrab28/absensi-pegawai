@@ -19,6 +19,7 @@
 <!-- Include modal utama -->
 <x-component.modal :id="$id" :title="$title" :size="$size">
     <form action="{{ $action }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+        @csrf
         {{ $slot }}
         <div class="flex justify-end space-x-3  p-5 border-t border-gray-200 dark:border-gray-600">
             <button type="button" data-modal-hide="{{ $id }}"

@@ -40,9 +40,9 @@
             </div>
 
             <!-- Body -->
-            <form class="p-4">
+            <div class="p-4">
                 {{ $slot }}
-            </form>
+            </div>
 
             <!-- Footer opsional -->
             @isset($footer)
