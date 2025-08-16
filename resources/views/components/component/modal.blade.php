@@ -17,10 +17,10 @@
 <!-- Modal -->
 
 <div id="{{ $id }}" tabindex="-1" aria-hidden="true"
-    class="hidden fixed inset-0 z-50 flex items-start justify-center pt-40 ps-60
-           bg-black/50 transition-opacity duration-700">
+    class=" hidden fixed inset-0 z-50 flex items-start justify-center pt-20 ps-60
+           bg-black/50 transition-opacity duration-700 p-10">
 
-    <div class="relative p-4 w-full {{ $maxWidth }} max-h-full">
+    <div class="relative p-4 w-full {{ $maxWidth }} max-h-full ">
         <!-- Modal content -->
         <div
             class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700

@@ -8,7 +8,17 @@
                 </div>
                 <div class="col-md-6">
 
-                    <x-form.modal id="userModal" title="Tambah User" label="Tambah Data" size="large-2"></x-form.modal>
+                    <x-form.modal id="userModal" title="Tambah User" label="Tambah Data" size="medium" action="{{ route('admin.user-store') }}" >
+
+                        <x-form.input id="name" label="Nama" name="name" :required="true" />
+                        <x-form.input id="email" label="Email" name="email" :required="true" type="email" />
+                        <x-form.input id="password" label="Password" name="password" :required="true"  type="password"  />
+
+
+
+
+
+                    </x-form.modal>
                 </div>
             </div>
         </div>
