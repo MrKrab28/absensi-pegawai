@@ -4,7 +4,7 @@
                 <div class="row pb-2 pt-3 text-xs w-full">
                     <div class="col-md-6">
 
-                        <h5 class="text-xl ms-6 font-medium mb-0">Data User</h5>
+                        <h5 class="text-dark text-2xl font-semibold sm:mb-0 mb-0">Data User</h5>
                     </div>
                     <div class="col-md-6">
 
