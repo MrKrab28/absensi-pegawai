@@ -41,7 +41,7 @@ class UserController extends Controller
             if ($e->validator->errors()->has('email')) {
                 return redirect()->back()->with('error', 'Email sudah terdaftar');
             }
-            throw $e; 
+            throw $e;
         }
 
         $this->userService->create($data);
@@ -50,8 +50,10 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $data = $this->userService->getById($user);
-        return view('pages.admin.user-edit', $data);
+        $data = $this->userService->getById($user->id);
+        return view('pages.admin.user-edit', [
+            'user' => $data
+        ]);
     }
 
     public function update(Request $request, User $user)
