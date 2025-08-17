@@ -7,10 +7,6 @@
                     <h5 class="text-xl ms-6 font-medium mb-0">Data User</h5>
                 </div>
                 <div class="col-md-6">
-                    <!-- Tambah tombol -->
-                    <button id="btn-swal" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-                        Simpan Data
-                    </button>
 
                     <x-form.modal id="userModal" title="Tambah User" label="Tambah Data" size="medium"
                         action="{{ route('admin.user-store') }}">

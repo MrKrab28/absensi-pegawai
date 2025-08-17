@@ -38,11 +38,10 @@ class UserController extends Controller
                 'password' => 'required'
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // cek jika error karena email sudah ada
             if ($e->validator->errors()->has('email')) {
                 return redirect()->back()->with('error', 'Email sudah terdaftar');
             }
-            throw $e; // error lain biarkan default
+            throw $e; 
         }
 
         $this->userService->create($data);
