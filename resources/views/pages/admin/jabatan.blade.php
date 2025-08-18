@@ -50,6 +50,7 @@
                                                     class="inline-flex items-center p-1 bg-blue-500 hover:bg-blue-700 text-white rounded-md text-sm font-small focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500"">
                                                     <x-icon name="edit" class="w-1 h-1" />
                                                 </a>
+
                                             </div>
                                             <div class="col-md-6">
                                                 <form id="form-delete-{{ $jabatan->id }}"

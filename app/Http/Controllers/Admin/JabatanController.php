@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Services\JabatanService;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\JabatanRepository;
+use App\Models\Jabatan;
+use App\Models\User;
 
 class JabatanController extends Controller
 {
@@ -27,20 +29,32 @@ class JabatanController extends Controller
     }
 
     public function store(Request $request){
-        $data = request()->all();
-        return view('pages.admin.jabatan-create');
+        $data = $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required'
+        ]);
+
+        $this->jabatanService->create($data);
+        return back()->with('success', 'Berhasil menambah Data');
     }
 
-    public function edit()
+    public function edit(Jabatan $jabatan)
     {
-        return view('pages.admin.jabatan-edit');
+        $data = $this->jabatanService->getById($jabatan->id);
+        return view('pages.admin.jabatan-edit', [
+            'jabatan' => $data
+        ]);
     }
 
-    public function update(){
-        return view('pages.admin.jabatan-update');
+    public function update(Jabatan $jabatan){
+
+        $data = request()->all();
+        $this->jabatanService->update($jabatan->id, $data);
+        return back()->with('success', 'Berhasil mengupdate Data');
     }
 
-    public function destroy(){
-        return view('pages.admin.jabatan-destroy');
+    public function destroy(Jabatan $jabatan){
+        $this->jabatanService->delete($jabatan->id);
+        return back()->with('success', 'Berhasil menghapus Data');
     }
 }
