@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\StatusPegawaiController;
+use App\Models\StatusPegawai;
 
 // Route::get('/', function () {
 //     return view('pages.admin.dashboard');
@@ -44,4 +46,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/department/{department}/edit', [DepartmentController::class, 'edit'])->name('department-edit');
     Route::put('/department/{department}', [DepartmentController::class, 'update'])->name('department-update');
     Route::delete('/department/{department}', [DepartmentController::class, 'destroy'])->name('department-delete');
+
+    // STATUS PEGAWAI
+    Route::get('/status-pegawai', [StatusPegawaiController::class, 'index'])->name('status-pegawai');
+    Route::post('/status-pegawai/store', [StatusPegawaiController::class, 'store'])->name('status-pegawai-store');
+    Route::get('/status-pegawai/{status}/edit', [StatusPegawaiController::class, 'edit'])->name('status-pegawai-edit');
+    Route::put('/status-pegawai/{status}', [StatusPegawaiController::class, 'update'])->name('status-pegawai-update');
+    Route::delete('/status-pegawai/{status}', [StatusPegawaiController::class, 'destroy'])->name('status-pegawai-delete');
 });

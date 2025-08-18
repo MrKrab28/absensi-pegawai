@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('status_pegawai', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('nama');
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }

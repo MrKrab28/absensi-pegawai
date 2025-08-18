@@ -50,9 +50,9 @@ return [
                 ],
                 [
                     'route-active' => 'status',
-                    'label' => 'Klasifikasi',
+                    'label' => 'Employment Status',
                     'icon' => 'report-search',
-                    'route-name' => null,
+                    'route-name' => 'admin.status-pegawai',
 
                 ],
                 [

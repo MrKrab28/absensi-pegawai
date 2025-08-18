@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Repositories\StatusPegawaiRepository;
+use App\Http\Repositories\StatusPegawaiRepository;
 
 class StatusPegawaiService
 {
