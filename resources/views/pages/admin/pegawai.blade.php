@@ -1,45 +1,79 @@
-<x-admin.layout>
-    <div class="card">
-        <style></style>
-        <div class="overflow-x-auto p-4">
-            <div class="bg-white shadow-md rounded-2xl overflow-hidden">
-                <table id="example" class="class="w-full">
-                    <thead class="bg-gray-50/80 backdrop-blur-sm">
-                        <tr class="border-b border-gray-200">
-                            <th class="px-6 py-4">Name</th>
-                            <th class="px-6 py-4">Position</th>
-                            <th class="px-6 py-4">Office</th>
-                            <th class="px-6 py-4">Age</th>
-                            <th class="px-6 py-4">Start date</th>
-                            <th class="px-6 py-4">Salary</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        <tr class="hover:bg-blue-50/50 transition-colors duration-300 group">
-                            <td class="px-6 py-4 font-medium text-gray-800">Cedric Kelly</td>
-                            <td class="px-6 py-4">Senior Javascript Developer</td>
-                            <td class="px-6 py-4">Edinburgh</td>
-                            <td class="px-6 py-4">22</td>
-                            <td class="px-6 py-4">2012-03-29</td>
-                            <td class="px-6 py-4">$433,060</td>
-                        </tr>
-                        <!-- Tambah baris lainnya di sini -->
-                    </tbody>
-                    <tfoot class="bg-gray-50/80 backdrop-blur-sm border-t border-gray-200">
-                        <tr>
-                            <th class="px-6 py-3">Name</th>
-                            <th class="px-6 py-3">Position</th>
-                            <th class="px-6 py-3">Office</th>
-                            <th class="px-6 py-3">Age</th>
-                            <th class="px-6 py-3">Start date</th>
-                            <th class="px-6 py-3">Salary</th>
-                        </tr>
-                    </tfoot>
-                </table>
+    <x-admin.layout>
+        <div class="card pb-5">
+            <div class="card-header">
+                <div class="row pb-2 pt-3 text-xs w-full">
+                    <div class="col-md-6">
+
+                        <h5 class="text-dark text-2xl font-semibold sm:mb-0 mb-0">Data Employee</h5>
+                    </div>
+                    <div class="col-md-6">
+
+                        <x-form.modal id="userModal" title="Tambah User" label="Tambah Data" size="medium"
+                            action="{{ route('admin.user-store') }}">
+
+                            <x-form.input id="name" label="Nama" name="nama" :required="true" />
+                            <x-form.input id="email" label="Email" name="email" :required="true"
+                                type="email" />
+                            <x-form.input id="password" label="Password" name="password" :required="true"
+                                type="password" />
+
+
+
+
+
+                        </x-form.modal>
+                    </div>
+                </div>
+            </div>
+            <div class="relative overflow-x-auto pt-3">
+
+                <div class="overflow-x-auto  pt-0  pb-5 mb-5 ps-5 ms-5 me-10 py-0">
+                    {{-- <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow"> --}}
+                    <!-- Table -->
+
+
+                    <x-component.datatable id="userTable" title="User" label="User">
+                        <thead>
+                            <tr>
+
+                                <th class="w-[50px] text-center">#</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            @foreach ($pegawais as $pegawai)
+                                <tr>
+                                    <td class="w-[50px] text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $pegawai->nama }}</td>
+                                    <td>{{ $pegawai->email }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{ route('admin.user-edit', $user->id) }}"
+                                                    class="inline-flex items-center p-1 bg-blue-500 hover:bg-blue-700 text-white rounded-md text-sm font-small focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500"">
+                                                    <x-icon name="edit" class="w-1 h-1" />
+                                                </a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <form id="form-delete-{{ $user->id }}"
+                                                    action="{{ route('admin.user-delete', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <x-component.button-icon type="button" color="danger"
+                                                        class="btn-delete" icon="trash" data-id="{{ $user->id }}"
+                                                        :small="true" />
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </x-component.datatable>
+                </div>
             </div>
         </div>
-
-
-    </div>
-    {{-- <script>new DataTable('#example');</script> --}}
-</x-admin.layout>
+    </x-admin.layout>

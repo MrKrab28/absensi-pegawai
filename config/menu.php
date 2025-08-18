@@ -28,29 +28,55 @@ return [
 
                 ],
                 [
-                    'route-active' => 'category',
-                    'label' => 'Category',
-                    'icon' => 'cpu',
+                    'route-active' => 'pegawai',
+                    'label' => 'Employees',
+                    'icon' => 'friends',
+                    'route-name' => 'admin.pegawai',
+
+                ],
+                [
+                    'route-active' => 'jabatan',
+                    'label' => 'Positions',
+                    'icon' => 'user-cog',
                     'route-name' => null,
 
                 ],
                 [
-                    'route-active' => 'course',
-                    'label' => 'Course',
-                    'icon' => 'book-2',
+                    'route-active' => 'departments',
+                    'label' => 'Departments',
+                    'icon' => 'buildings',
                     'route-name' => null,
 
                 ],
                 [
-                    'route-active' => 'materi',
-                    'label' => 'Modul',
-                    'icon' => 'book',
+                    'route-active' => 'status',
+                    'label' => 'Klasifikasi',
+                    'icon' => 'report-search',
+                    'route-name' => null,
+
+                ],
+                [
+                    'route-active' => 'work_type',
+                    'label' => 'Work Type',
+                    'icon' => 'briefcase',
                     'route-name' => null,
 
                 ],
             ]
         ],
 
+        'Attendances' => [
+            'title' => 'Attendances',
+            'items' => [
+                [
+                    'route-active' => 'absensi',
+                    'label' => 'Attendance',
+                    'icon' => 'calendar-user',
+                    'route-name' => null,
+                ],
+
+            ]
+        ],
 
         'Roadmap' => [
             'title' => 'Roadmap',

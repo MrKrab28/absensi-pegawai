@@ -78,8 +78,8 @@ class ImportTablerIcons extends Command
             $svg = preg_replace(
                 '/<svg([^>]+)>/',
                 $style === 'filled'
-                    ? '<svg$1 fill="currentColor" stroke="none" {{ $attributes->merge([\'class\' => \'w-6 h-6\']) }}>'
-                    : '<svg$1 fill="none" stroke="currentColor" {{ $attributes->merge([\'class\' => \'w-6 h-6\']) }}>',
+                    ? '<svg$1 fill="currentColor" stroke="none" {{ $attributes->merge([\'class\' => \'w-4 h-4\']) }}>'
+                    : '<svg$1 fill="none" stroke="currentColor" {{ $attributes->merge([\'class\' => \'w-4 h-4\']) }}>',
                 $svg
             );
 
@@ -93,32 +93,36 @@ class ImportTablerIcons extends Command
 
     /**
      * Rekursif ambil semua icon dari menu dan submenu
+     * FIX: Menangani struktur menu yang memiliki level 'admin' dan 'user'
      */
-   protected function extractIconsFromMenu(array $menu): array
-{
-    $icons = [];
+    protected function extractIconsFromMenu(array $menu): array
+    {
+        $icons = [];
 
-    foreach ($menu as $group) {
-        if (isset($group['items']) && is_array($group['items'])) {
-            foreach ($group['items'] as $item) {
-                if (isset($item['icon'])) {
-                    $icons[] = $item['icon'];
-                }
+        foreach ($menu as $roleKey => $role) { // 'admin' atau 'user'
+            if (is_array($role)) {
+                foreach ($role as $groupKey => $group) { // 'Home', 'Master', 'Roadmap'
+                    if (isset($group['items']) && is_array($group['items'])) {
+                        foreach ($group['items'] as $item) {
+                            // Ambil icon dari item utama
+                            if (isset($item['icon'])) {
+                                $icons[] = $item['icon'];
+                            }
 
-                if (isset($item['submenu']) && is_array($item['submenu'])) {
-                    // Submenu kamu tidak punya icon, jadi tidak perlu ambil icon dari submenu
-                    // Tapi kalau ada icon di submenu, bisa juga ambil dengan rekursif
-                    foreach ($item['submenu'] as $sub) {
-                        if (isset($sub['icon'])) {
-                            $icons[] = $sub['icon'];
+                            // Ambil icon dari submenu jika ada
+                            if (isset($item['submenu']) && is_array($item['submenu'])) {
+                                foreach ($item['submenu'] as $sub) {
+                                    if (isset($sub['icon'])) {
+                                        $icons[] = $sub['icon'];
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+
+        return array_unique($icons);
     }
-
-    return $icons;
-}
-
 }

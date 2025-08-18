@@ -11,5 +11,8 @@
   
  fill="none" stroke="currentColor" {{ $attributes->merge(['class' => 'w-4 h-4']) }}>
   
-  <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+  <path d="M3 16v-6a2 2 0 1 1 4 0v6" />
+  <path d="M3 13h4" />
+  <path d="M10 8v6a2 2 0 1 0 4 0v-1a2 2 0 1 0 -4 0v1" />
+  <path d="M20.732 12a2 2 0 0 0 -3.732 1v1a2 2 0 0 0 3.726 1.01" />
 </svg>

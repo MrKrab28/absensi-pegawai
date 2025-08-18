@@ -17,7 +17,7 @@
                     <x-form.input id="" label="Email" type="email" name="email"
                         value="{{ $user->email }}" helperText="" />
                     <x-form.input id="" label="Password" type="password" name="password" value=""
-                        helperText="" />
+                        helperText="Kosongkan jika tidak mengganti Password" />
 
                     <div class="flex justify-end mt-4">
                         <x-component.button label="Simpan" type="submit" color="primary" />

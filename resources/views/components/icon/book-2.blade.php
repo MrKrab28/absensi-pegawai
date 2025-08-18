@@ -9,7 +9,7 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   
- fill="none" stroke="currentColor" {{ $attributes->merge(['class' => 'w-6 h-6']) }}>
+ fill="none" stroke="currentColor" {{ $attributes->merge(['class' => 'w-4 h-4']) }}>
   
   <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" />
   <path d="M19 16h-12a2 2 0 0 0 -2 2" />

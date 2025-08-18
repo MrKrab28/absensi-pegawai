@@ -22,7 +22,6 @@
 
 
                         </x-form.modal>
-
                     </div>
                 </div>
             </div>
