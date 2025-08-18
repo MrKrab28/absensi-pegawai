@@ -26,8 +26,8 @@ class JabatanController extends Controller
         ]);
     }
 
-    public function create(){
-
+    public function store(Request $request){
+        $data = request()->all();
         return view('pages.admin.jabatan-create');
     }
 

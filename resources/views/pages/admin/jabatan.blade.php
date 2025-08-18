@@ -12,11 +12,7 @@
                             action="{{ route('admin.jabatan-store') }}">
 
                             <x-form.input id="name" label="Nama" name="nama" :required="true" />
-                            <x-form.input id="name" label="Nama" name="nama" :required="true" />
-                            <x-form.input id="email" label="Email" name="email" :required="true"
-                                type="email" />
-                            <x-form.input id="password" label="Password" name="password" :required="true"
-                                type="password" />
+                            <x-form.input id="deskripsi" label="Deskripsi" name="deskripsi" :required="true" />
 
                         </x-form.modal>
                     </div>
@@ -57,7 +53,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <form id="form-delete-{{ $jabatan->id }}"
-                                                    action="{{ route('admin.jabatan-delete', $jabatan->id) }}" method="POST">
+                                                    action="{{ route('admin.jabatan-delete', $jabatan->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <x-component.button-icon type="button" color="danger"

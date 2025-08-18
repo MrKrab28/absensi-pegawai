@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\UserRepository;
+use Illuminate\Validation\ValidationException;
 
 
 
@@ -37,7 +38,7 @@ class UserController extends Controller
                 'email' => 'required|unique:users,email',
                 'password' => 'required'
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             if ($e->validator->errors()->has('email')) {
                 return redirect()->back()->with('error', 'Email sudah terdaftar');
             }
