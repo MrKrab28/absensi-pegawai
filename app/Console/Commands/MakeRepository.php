@@ -47,7 +47,7 @@ class MakeRepository extends Command
         return <<<PHP
 <?php
 
-namespace App\Repositories;
+namespace App\Http\Repositories;
 
 use App\Models\\{$name};
 
@@ -88,7 +88,7 @@ PHP;
         return <<<PHP
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
 use App\Repositories\\{$name}Repository;
 

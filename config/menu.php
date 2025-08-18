@@ -38,7 +38,7 @@ return [
                     'route-active' => 'jabatan',
                     'label' => 'Positions',
                     'icon' => 'user-cog',
-                    'route-name' => null,
+                    'route-name' => 'admin.jabatan',
 
                 ],
                 [
