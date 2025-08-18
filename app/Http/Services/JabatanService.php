@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Repositories\JabatanRepository;
+use App\Http\Repositories\JabatanRepository;
 
 class JabatanService
 {

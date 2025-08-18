@@ -12,6 +12,7 @@
                             action="{{ route('admin.jabatan-store') }}">
 
                             <x-form.input id="name" label="Nama" name="nama" :required="true" />
+                            <x-form.input id="name" label="Nama" name="nama" :required="true" />
                             <x-form.input id="email" label="Email" name="email" :required="true"
                                 type="email" />
                             <x-form.input id="password" label="Password" name="password" :required="true"
@@ -33,8 +34,9 @@
                             <tr>
 
                                 <th class="w-[50px] text-center">#</th>
+                                <th>Code</th>
                                 <th>Nama</th>
-                                <th>Email</th>
+                                <th>Deskripsi</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -44,7 +46,7 @@
                                     <td class="w-[50px] text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $jabatan->code }}</td>
                                     <td>{{ $jabatan->nama }}</td>
-                                    <td>{{ $jabatan->deskripsi }}</td>
+                                    <td>{{ Str::limit($jabatan->deskripsi, 50) }}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-6">

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Services\JabatanService;
+use App\Http\Services\JabatanService;
 use App\Http\Controllers\Controller;
-use App\Repositories\JabatanRepository;
+use App\Http\Repositories\JabatanRepository;
 
 class JabatanController extends Controller
 {

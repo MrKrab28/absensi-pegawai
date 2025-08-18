@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Department;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,12 @@ return new class extends Migration
             $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
+
+        $jabatan = new Department();
+        $jabatan->code = '1';
+        $jabatan->nama = 'IGD';
+        $jabatan->deskripsi = 'Instalasi Gawat Darurat';
+        $jabatan->save();
     }
 
     /**
