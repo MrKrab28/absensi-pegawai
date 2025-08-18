@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DepartmentController;
 
 // Route::get('/', function () {
 //     return view('pages.admin.dashboard');
@@ -36,4 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/jabatan/{jabatan}/edit', [JabatanController::class, 'edit'])->name('jabatan-edit');
     Route::put('/jabatan/{jabatan}', [JabatanController::class, 'update'])->name('jabatan-update');
     Route::delete('/jabatan/{jabatan}', [JabatanController::class, 'destroy'])->name('jabatan-delete');
+
+    // DEPARTMENT
+    Route::get('/department', [DepartmentController::class, 'index'])->name('department');
+    Route::post('/department/store', [DepartmentController::class, 'store'])->name('department-store');
+    Route::get('/department/{department}/edit', [DepartmentController::class, 'edit'])->name('department-edit');
+    Route::put('/department/{department}', [DepartmentController::class, 'update'])->name('department-update');
+    Route::delete('/department/{department}', [DepartmentController::class, 'destroy'])->name('department-delete');
 });

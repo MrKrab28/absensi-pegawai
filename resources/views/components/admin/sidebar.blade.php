@@ -24,8 +24,9 @@
                         @foreach ($menuGroup['items'] as $item)
                             @if (isset($item['submenu']))
                                 <li class="hs-accordion sidebar-item" id="ui-accordion">
-                                    <a href="#" class="hs-accordion-toggle sidebar-link dropdown-menu-link">
-                                        <x-icon name="{{ $item['icon'] }}" class="w-6 h-6"/>
+                                    <a href="#"
+                                        class="hs-accordion-toggle sidebar-link dropdown-menu-link  @if (request()->segment(2) == $item['route-active']) active @endif">
+                                        <x-icon name="{{ $item['icon'] }}" class="w-6 h-6" />
                                         <span class="hide-menu">{{ $item['label'] }}</span>
                                         <span class="hide-menu ms-auto">
                                             <x-icon name="chevron-down"
@@ -38,7 +39,7 @@
                                         <ul>
                                             @foreach ($item['submenu'] as $submenu)
                                                 <li class="pl-4 pr-3">
-                                                    <a class="dropdown-submenu-link flex items-center justify-between"
+                                                    <a class="dropdown-submenu-link flex items-center justify-between  @if (request()->segment(2) == $item['route-active']) active @endif"
                                                         href="{{ isset($submenu['route-name']) ? route($submenu['route-name']) : '#' }}"
                                                         target="{{ $submenu['target'] ?? '_self' }}">
                                                         <span class="flex gap-2 items-center ">
@@ -62,7 +63,7 @@
                                     <a class="sidebar-link @if (request()->segment(2) == $item['route-active']) active @endif gap-3 py-3 px-3 rounded-md w-full flex items-center justify-between hover:text-primary hover:bg-primary/15"
                                         href="{{ isset($item['route-name']) ? route($item['route-name']) : '#' }}">
                                         <span class="flex gap-3 items-center">
-                                            <x-icon name="{{ $item['icon'] }}" class="w-6 h-6"/>
+                                            <x-icon name="{{ $item['icon'] }}" class="w-6 h-6" />
                                             <span>{{ $item['label'] }}</span>
                                         </span>
                                     </a>

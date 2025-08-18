@@ -42,10 +42,10 @@ return [
 
                 ],
                 [
-                    'route-active' => 'departments',
+                    'route-active' => 'department',
                     'label' => 'Departments',
                     'icon' => 'buildings',
-                    'route-name' => null,
+                    'route-name' => 'admin.department',
 
                 ],
                 [
