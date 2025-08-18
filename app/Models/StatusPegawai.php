@@ -22,7 +22,7 @@ class StatusPegawai extends Model
             if (!$model->code) {
                 $lastCode = self::latest('id')->first()?->code; // ambil code terakhir
                 $number = $lastCode ? intval(substr($lastCode, 2)) + 1 : 1; // ambil angka setelah "D-"
-                $model->code = 'P-' . $number;
+                $model->code = 'SPG-' . $number;
             }
         });
     }
