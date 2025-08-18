@@ -20,7 +20,7 @@ class JabatanService
 
     public function getById($id)
     {
-        return $this->JabatanRepository->find($id);
+        return $this->JabatanRepository->getById($id);
     }
 
     public function create(array $data)

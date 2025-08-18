@@ -20,7 +20,7 @@ class StatusPegawaiService
 
     public function getById($id)
     {
-        return $this->StatusPegawaiRepository->find($id);
+        return $this->StatusPegawaiRepository->getById($id);
     }
 
     public function create(array $data)

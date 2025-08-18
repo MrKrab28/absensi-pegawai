@@ -20,7 +20,7 @@ class DepartmentService
 
     public function getById($id)
     {
-        return $this->DepartmentRepository->find($id);
+        return $this->DepartmentRepository->getById($id);
     }
 
     public function create(array $data)

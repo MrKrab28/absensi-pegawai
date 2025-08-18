@@ -108,7 +108,7 @@ class {$name}Service
 
     public function getById(\$id)
     {
-        return \$this->{$name}Repository->find(\$id);
+        return \$this->{$name}Repository->getById(\$id);
     }
 
     public function create(array \$data)

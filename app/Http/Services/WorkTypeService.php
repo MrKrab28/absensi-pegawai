@@ -20,7 +20,7 @@ class WorkTypeService
 
     public function getById($id)
     {
-        return $this->WorkTypeRepository->find($id);
+        return $this->WorkTypeRepository->getById($id);
     }
 
     public function create(array $data)
