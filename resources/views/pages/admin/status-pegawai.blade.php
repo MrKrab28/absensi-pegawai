@@ -13,6 +13,19 @@
 
                             <x-form.input id="name" label="Nama" name="nama" :required="true" />
                             <x-form.input id="deskripsi" label="Deskripsi" name="deskripsi" />
+                            <div class="max-w-md mx-auto">
+                                <label for="pegawai"
+                                    class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    Pilih Pegawai
+                                </label>
+                                <select id="pegawai" name="pegawai">
+                                    <!-- class disembunyikan karena TomSelect ganti element -->
+                                    <option value="1">Andi</option>
+                                    <option value="2">Budi</option>
+                                    <option value="3">Citra</option>
+                                    <option value="4">Dewi</option>
+                                </select>
+                            </div>
 
                         </x-form.modal>
                     </div>

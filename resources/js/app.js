@@ -9,6 +9,7 @@ import 'flowbite';
 import "./sweetalert";
 
 import "./simplebar";
+import "./selectTom";
 // import '.@tabler/tabler-icons';
 // import "./datatable.js"
 import DataTable from "datatables.net-dt";

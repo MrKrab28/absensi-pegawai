@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "../../node_modules/datatables.net-dt/css/dataTables.dataTables.min.css";
 @import "../../node_modules/simplebar/dist/simplebar.css";
+@import "tom-select/dist/css/tom-select.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -28,7 +29,7 @@ body {
     border-radius: 9999px;
 }
 .card {
-    @apply bg-white border border-gray-200 rounded-lg ;
+    @apply bg-white border border-gray-200 rounded-lg;
 }
 
 /* Card header */
@@ -117,4 +118,101 @@ select#entriesPerPage {
     -webkit-appearance: none; /* Safari & Chrome */
     -moz-appearance: none; /* Firefox */
     background-image: none; /* Hilangkan icon bawaan */
+}
+.ts-control {
+    @apply w-full text-sm border border-gray-300 rounded-xl shadow-md
+         px-3 py-2 bg-white text-gray-700
+         focus:border-blue-600 focus:ring focus:ring-blue-200 transition;
+}
+
+/* Item yang sudah dipilih */
+/* .ts-control .item {
+    @apply bg-blue-500 text-white px-2 py-1 rounded-lg text-xs shadow-sm;
+} */
+
+/* Placeholder */
+.ts-control .ts-placeholder {
+    @apply text-gray-400;
+}
+
+/* Dropdown utama */
+.ts-dropdown {
+    @apply mt-1 border border-gray-200 rounded-xl shadow-lg bg-white overflow-hidden;
+}
+
+/* Opsi di dropdown */
+.ts-dropdown .option {
+    @apply px-3 py-2 cursor-pointer text-gray-700 transition;
+}
+
+/* Hover efek */
+.ts-dropdown .option:hover {
+    @apply bg-blue-50 text-blue-600;
+}
+
+/* Opsi aktif (pakai keyboard arrow) */
+.ts-dropdown .option.active {
+    @apply bg-blue-100 text-blue-700;
+}
+
+.ts-control {
+    @apply border border-gray-300 rounded-xl shadow-md
+         px-3 py-2 bg-white text-gray-700
+         focus:border-blue-600 focus:ring focus:ring-blue-200 transition;
+    border-bottom: none !important; /* hapus garis bawah bawaan */
+}
+.ts-wrapper .ts-control::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #555;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.ts-control,
+.ts-wrapper.single.input-active {
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+/* Kalau masih ada, pastikan wrapper tidak pakai border juga */
+.ts-wrapper {
+    border: none !important;
+}
+
+/* ==============================
+   Dark Mode
+   ============================== */
+.dark .ts-control {
+    @apply bg-gray-800 border-gray-700 text-gray-200
+         focus:border-blue-400 focus:ring focus:ring-blue-900;
+}
+
+.dark .ts-control .item {
+    @apply bg-blue-600 text-white;
+}
+
+.dark .ts-placeholder {
+    @apply text-gray-500;
+}
+
+.dark .ts-dropdown {
+    @apply bg-gray-800 border-gray-700 shadow-xl overflow-hidden;
+}
+
+.dark .ts-dropdown .option {
+    @apply text-gray-200;
+}
+
+.dark .ts-dropdown .option:hover {
+    @apply bg-gray-700 text-blue-400;
+}
+
+.dark .ts-dropdown .option.active {
+    @apply bg-blue-900 text-white;
 }
