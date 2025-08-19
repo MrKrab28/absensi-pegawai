@@ -15,7 +15,18 @@ return [
             ]
         ],
 
+        'Attendances' => [
+            'title' => 'Attendances',
+            'items' => [
+                [
+                    'route-active' => 'absensi',
+                    'label' => 'Attendance',
+                    'icon' => 'calendar-user',
+                    'route-name' => null,
+                ],
 
+            ]
+        ],
 
         'Master' => [
             'title' => 'Master',
@@ -49,34 +60,23 @@ return [
 
                 ],
                 [
-                    'route-active' => 'status',
+                    'route-active' => 'status-pegawai',
                     'label' => 'Employment Status',
                     'icon' => 'report-search',
                     'route-name' => 'admin.status-pegawai',
 
                 ],
                 [
-                    'route-active' => 'work_type',
+                    'route-active' => 'work-type',
                     'label' => 'Work Type',
                     'icon' => 'briefcase',
-                    'route-name' => null,
+                    'route-name' => 'admin.work-type',
 
                 ],
             ]
         ],
 
-        'Attendances' => [
-            'title' => 'Attendances',
-            'items' => [
-                [
-                    'route-active' => 'absensi',
-                    'label' => 'Attendance',
-                    'icon' => 'calendar-user',
-                    'route-name' => null,
-                ],
 
-            ]
-        ],
 
         'Roadmap' => [
             'title' => 'Roadmap',

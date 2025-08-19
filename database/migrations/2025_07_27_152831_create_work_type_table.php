@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('work_type', function (Blueprint $table) {
             $table->id();
+
+            $table->string('code');
             $table->string('nama');
             $table->string('deskripsi')->nullable();
 
             $table->timestamps();
 
-            
+
         });
     }
 

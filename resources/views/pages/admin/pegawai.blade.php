@@ -8,8 +8,8 @@
                     </div>
                     <div class="col-md-6">
 
-                        <x-form.modal id="userModal" title="Tambah User" label="Tambah Data" size="medium"
-                            action="{{ route('admin.user-store') }}">
+                        <x-form.modal id="pegawaiModal" title="Tambah Pegawai" label="Tambah Data" size="medium"
+                            action="{{ route('admin.pegawai-store') }}">
 
                             <x-form.input id="name" label="Nama" name="nama" :required="true" />
                             <x-form.input id="email" label="Email" name="email" :required="true"
@@ -32,7 +32,7 @@
                     <!-- Table -->
 
 
-                    <x-component.datatable id="userTable" title="User" label="User">
+                    <x-component.datatable id="pegawaiTable" title="pegawai" label="pegawai">
                         <thead>
                             <tr>
 
@@ -51,18 +51,18 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-6">
-                                                <a href="{{ route('admin.user-edit', $user->id) }}"
+                                                <a href="{{ route('admin.pegawai-edit', $pegawai->id) }}"
                                                     class="inline-flex items-center p-1 bg-blue-500 hover:bg-blue-700 text-white rounded-md text-sm font-small focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500"">
                                                     <x-icon name="edit" class="w-1 h-1" />
                                                 </a>
                                             </div>
                                             <div class="col-md-6">
-                                                <form id="form-delete-{{ $user->id }}"
-                                                    action="{{ route('admin.user-delete', $user->id) }}" method="POST">
+                                                <form id="form-delete-{{ $pegawai->id }}"
+                                                    action="{{ route('admin.pegawai-delete', $pegawai->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <x-component.button-icon type="button" color="danger"
-                                                        class="btn-delete" icon="trash" data-id="{{ $user->id }}"
+                                                        class="btn-delete" icon="trash" data-id="{{ $pegawai->id }}"
                                                         :small="true" />
                                                 </form>
 

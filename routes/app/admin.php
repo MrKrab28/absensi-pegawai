@@ -1,14 +1,16 @@
 <?php
 
 use App\Models\Jabatan;
+use App\Models\WorkType;
+use App\Models\StatusPegawai;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\PegawaiController;
+use App\Http\Controllers\Admin\WorkTypeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\StatusPegawaiController;
-use App\Models\StatusPegawai;
 
 // Route::get('/', function () {
 //     return view('pages.admin.dashboard');
@@ -53,4 +55,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/status-pegawai/{status}/edit', [StatusPegawaiController::class, 'edit'])->name('status-pegawai-edit');
     Route::put('/status-pegawai/{status}', [StatusPegawaiController::class, 'update'])->name('status-pegawai-update');
     Route::delete('/status-pegawai/{status}', [StatusPegawaiController::class, 'destroy'])->name('status-pegawai-delete');
+
+    // WORK TYPE
+    Route::get('/work-type', [WorkTypeController::class, 'index'])->name('work-type');
+    Route::post('/work-type/store', [WorkTypeController::class, 'store'])->name('work-type-store');
+    Route::get('/work-type/{workType}/edit', [WorkTypeController::class, 'edit'])->name('work-type-edit');
+    Route::put('/work-type/{workType}', [WorkTypeController::class, 'update'])->name('work-type-update');
+    Route::delete('/work-type/{workType}', [WorkTypeController::class, 'destroy'])->name('work-type-delete');
 });

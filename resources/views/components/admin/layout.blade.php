@@ -112,7 +112,7 @@
 
                     Swal.fire({
                         title: "Apakah Anda yakin?",
-                        text: "User yang dihapus tidak bisa dikembalikan!",
+                        text: "Data yang dihapus tidak bisa dikembalikan!",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonText: "Ya, hapus!",
