@@ -24,6 +24,13 @@ return [
                     'icon' => 'calendar-user',
                     'route-name' => null,
                 ],
+                [
+                    'route-active' => 'shift-kerja',
+                    'label' => 'Employee Shifts',
+                    'icon' => 'calendar-stats',
+                    'route-name' => 'admin.work-type',
+
+                ],
 
             ]
         ],
@@ -59,6 +66,14 @@ return [
                     'route-name' => 'admin.department',
 
                 ],
+                [
+                    'route-active' => 'shift',
+                    'label' => 'Shift Schedules',
+                    'icon' => 'calendar-cog',
+                    'route-name' => 'admin.shift',
+
+                ],
+
                 [
                     'route-active' => 'status-pegawai',
                     'label' => 'Employment Status',

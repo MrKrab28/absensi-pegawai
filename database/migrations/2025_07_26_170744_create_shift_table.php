@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('nama');
             $table->time('start_time');
             $table->time('end_time');
-            $table->time('break_start');
-            $table->time('break_end');
-            $table->time('jam_kerja');
+
+        
             // $table->time('jam_kerja');
 
             $table->timestamps();

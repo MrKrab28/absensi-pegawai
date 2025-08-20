@@ -5,6 +5,7 @@ use App\Models\WorkType;
 use App\Models\StatusPegawai;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ShiftController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\WorkTypeController;
@@ -62,4 +63,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/work-type/{workType}/edit', [WorkTypeController::class, 'edit'])->name('work-type-edit');
     Route::put('/work-type/{workType}', [WorkTypeController::class, 'update'])->name('work-type-update');
     Route::delete('/work-type/{workType}', [WorkTypeController::class, 'destroy'])->name('work-type-delete');
+
+    // SHIFT
+    Route::get('/shift', [ShiftController::class, 'index'])->name('shift');
+    Route::post('/shift/store', [ShiftController::class, 'store'])->name('shift-store');
+    Route::get('/shift/{shift}/edit', [ShiftController::class, 'edit'])->name('shift-edit');
+    Route::put('/shift/{shift}', [ShiftController::class, 'update'])->name('shift-update');
+    Route::delete('/shift/{shift}', [ShiftController::class, 'destroy'])->name('shift-delete');
 });
