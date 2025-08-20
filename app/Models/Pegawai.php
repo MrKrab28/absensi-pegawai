@@ -43,5 +43,10 @@ class Pegawai extends Authenticatable
     {
         return $this->belongsTo(StatusPegawai::class);
     }
-    
+
+    public function pegawai_shifts()
+    {
+        return $this->hasMany(PegawaiShift::class);
+    }
+
 }

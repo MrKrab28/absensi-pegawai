@@ -32,4 +32,10 @@ class PegawaiRepository
     {
         return Pegawai::destroy($id);
     }
+
+    public function allSelect()
+    {
+        $data = Pegawai::pluck('nama', 'code');
+        return $data;
+    }
 }

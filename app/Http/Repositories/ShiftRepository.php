@@ -32,4 +32,9 @@ class ShiftRepository
     {
         return Shift::destroy($id);
     }
+
+    public function allSelect()
+    {
+        return Shift::pluck('nama', 'code');
+    }
 }

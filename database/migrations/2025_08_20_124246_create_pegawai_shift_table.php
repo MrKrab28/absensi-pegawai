@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('pegawai_shift', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id');
+            $table->foreignId('pegawai_id');
             $table->foreignId('shift_id');
             $table->date('shift_date');
+            $table->date('tgl');
+
             $table->timestamps();
 
-            $table->foreign('employee_id')->references('id')->on('pegawai')->onDelete('cascade');
+            $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
             $table->foreign('shift_id')->references('id')->on('shift')->onDelete('cascade');
         });
     }

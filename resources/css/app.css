@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "../../node_modules/datatables.net-dt/css/dataTables.dataTables.min.css";
 @import "../../node_modules/simplebar/dist/simplebar.css";
-@import "tom-select/dist/css/tom-select.css";
+@import "../../node_modules/tom-select/dist/css/tom-select.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -159,7 +159,7 @@ select#entriesPerPage {
     @apply border border-gray-300 rounded-xl shadow-md
          px-3 py-2 bg-white text-gray-700
          focus:border-blue-600 focus:ring focus:ring-blue-200 transition;
-    border-bottom: none !important; /* hapus garis bawah bawaan */
+    /* border-bottom: none !important; hapus garis bawah bawaan */
 }
 .ts-wrapper .ts-control::after {
   content: "";
@@ -176,9 +176,9 @@ select#entriesPerPage {
 }
 .ts-control,
 .ts-wrapper.single.input-active {
-    border: 1px solid #d1d5db; /* border-gray-300 */
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 2px solid #d1d5db; /* border-gray-300 */
+    border-radius: 5px; /* rounded-xl */
+    box-shadow: 0 1px 2px  rgba(0, 0, 0, 0.05);
 }
 /* Kalau masih ada, pastikan wrapper tidak pakai border juga */
 .ts-wrapper {

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\WorkTypeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\PegawaiShiftController;
 use App\Http\Controllers\Admin\StatusPegawaiController;
 
 // Route::get('/', function () {
@@ -70,4 +71,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/shift/{shift}/edit', [ShiftController::class, 'edit'])->name('shift-edit');
     Route::put('/shift/{shift}', [ShiftController::class, 'update'])->name('shift-update');
     Route::delete('/shift/{shift}', [ShiftController::class, 'destroy'])->name('shift-delete');
+
+    // PEGAWAI SHIFT
+    Route::get('/pegawai-shift', [PegawaiShiftController::class, 'index'])->name('pegawai-shift');
+    Route::post('/pegawai-shift/store', [PegawaiShiftController::class, 'store'])->name('pegawai-shift-store');
+    Route::get('/pegawai-shift/{pegawaiShift}/edit', [PegawaiShiftController::class, 'edit'])->name('pegawai-shift-edit');
+    Route::put('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'update'])->name('pegawai-shift-update');
+    Route::delete('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'destroy'])->name('pegawai-shift-delete');
 });

@@ -28,7 +28,7 @@ return [
                     'route-active' => 'shift-kerja',
                     'label' => 'Employee Shifts',
                     'icon' => 'calendar-stats',
-                    'route-name' => 'admin.work-type',
+                    'route-name' => 'admin.pegawai-shift',
 
                 ],
 

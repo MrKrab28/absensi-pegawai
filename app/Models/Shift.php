@@ -19,4 +19,9 @@ class Shift extends Model
             }
         });
     }
+
+    public function pegawai_shifts()
+    {
+        return $this->hasMany(PegawaiShift::class);
+    }
 }

@@ -37,4 +37,9 @@ class ShiftService
     {
         return $this->ShiftRepository->delete($id);
     }
+
+    public function allSelect()
+    {
+        return $this->ShiftRepository->allSelect();
+    }
 }

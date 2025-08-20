@@ -18,7 +18,7 @@
 
     <select id="{{ $id }}" name="{{ $name }}{{ $multiple ? '[]' : '' }}"
         placeholder="{{ $placeholder }}" @if ($required) required @endif
-        @if ($multiple) multiple @endif data-tom="true" autocomplete="off" class="w-full">
+        @if ($multiple) multiple @endif data-tom="true" autocomplete="off" class="w-full mb-3  ">
         {{ $slot }}
     </select>
 </div>

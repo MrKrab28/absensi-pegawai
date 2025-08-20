@@ -48,4 +48,9 @@ class PegawaiService
     {
         return $this->PegawaiRepository->delete($id);
     }
+
+    public function allSelect()
+    {
+        return $this->PegawaiRepository->getAll();
+    }
 }
