@@ -10,17 +10,18 @@
 
                         <x-form.modal id="employeeShiftModal" title="Tambah Employee Shift" label="Tambah Data"
                             size="medium" action="{{ route('admin.pegawai-shift-store') }}">
-                            <x-form.select-tom name="pegawai_id" label="Employee" placeholder="Select Employee..."
-                                required>
-                                <option value="">-- Select Employee --</option>
-                                @foreach ($pegawais as $code => $nama )
-                                    <option value="{{ $code}}">{{ $code }}-{{ $nama }}</option>
+                            <x-form.select-tom name="pegawai_id" label="Employee" required>
+                                <option value="Employee">  Select Employee...</option>
+
+                                @foreach ($pegawais as $code => $nama)
+                                    <option value="{{ $code }}">{{ $code }}-{{ $nama }}</option>
                                 @endforeach
                             </x-form.select-tom>
-                            <x-form.select-tom name="shift_id" label="Shift" placeholder="Select Shift...">
-                                <option value="">-- Select Shift --</option>
-                                @foreach ($shifts as $code => $nama )
-                                    <option class="text-2xl" value="{{ $code }}">{{ $code }}  |  {{ $nama }}</option>
+                            <x-form.select-tom name="shift_id" label="Shift" required class="text-2xl">
+                                <option value="Shift">  Select Shift...</option>
+                                @foreach ($shifts as $code => $nama)
+                                    <option class="text-2xl" value="{{ $code }}">{{ $code }} |
+                                        {{ $nama }}</option>
                                 @endforeach
                             </x-form.select-tom>
                             <x-form.input id="name" label="Nama" name="nama" :required="true"
