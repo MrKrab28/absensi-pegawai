@@ -55,6 +55,6 @@ class JabatanController extends Controller
 
     public function destroy(Jabatan $jabatan){
         $this->jabatanService->delete($jabatan->id);
-        return back()->with('success', 'Berhasil menghapus Data');
+        return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -59,7 +59,7 @@
     </main>
 
     <script></script>
-    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/libs/simplebar/dist/simplebar.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/libs/iconify-icon/dist/iconify-icon.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('assets/libs/preline/dist/preline.js') }}"></script> --}}
@@ -75,32 +75,24 @@
     @stack('scripts')
     @if (Session::has('success'))
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: "{{ Session::get('success') }}",
-
-                    // background: '#212529',
-
-
-                });
+            window.addEventListener('load', function() {
+                if (window.toast) {
+                    toast("{{ session('success') }}", "success", "{{ session('action') ?? 'add' }}");
+                }
             });
         </script>
     @endif
+
     @if (Session::has('error'))
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: "{{ Session::get('error') }}",
-
-                });
+            window.addEventListener('load', function() {
+                if (window.toast) {
+                    toast("{{ session('error') }}", "error");
+                }
             });
         </script>
     @endif
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.btn-delete').forEach(button => {
