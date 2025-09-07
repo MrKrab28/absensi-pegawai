@@ -13,7 +13,24 @@ return new class extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
+               $table->foreignId('pegawai_id');
+
+            $table->foreignId('shift_id');
+
+            $table->dateTime('waktu_masuk')->nullable();
+            $table->dateTime('waktu_keluar')->nullable();
+
+            $table->string('foto')->nullable();
+
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
+
+            $table->enum('status', ['hadir', 'izin', 'alpha'])->default('hadir');
+
             $table->timestamps();
+
+            $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
+            $table->foreign('shift_id')->references('id')->on('shift')->onDelete('cascade');
         });
     }
 
