@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
-use App\Repositories\AbsensiRepository;
+use App\Http\Repositories\AbsensiRepository;
 
 class AbsensiService
 {
@@ -20,7 +20,7 @@ class AbsensiService
 
     public function getById($id)
     {
-        return $this->AbsensiRepository->find($id);
+        return $this->AbsensiRepository->getById($id);
     }
 
     public function create(array $data)
