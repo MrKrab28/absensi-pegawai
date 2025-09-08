@@ -46,7 +46,7 @@ class UserController extends Controller
         }
 
         $this->userService->create($data);
-        return redirect()->back()->with('success', 'User berhasil ditambahkan');
+        return redirect()->back()->with('success', 'User berhasil ditambahkan')->with('action', 'add');
     }
 
     public function edit(User $user)
@@ -59,14 +59,17 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-            $data = $request->all();
-            $this->userService->update($user->id, $data);
-            return redirect()->back()->with('success', 'User berhasil diupdate');
+        $data = $request->all();
+        $this->userService->update($user->id, $data);
+        return redirect()->back()->with('success', 'User berhasil diupdate');
     }
 
     public function destroy(User $user)
-{
+    {
         $this->userService->delete($user->id);
-        return redirect()->back()->with('success', 'User berhasil dihapus');
+        return response()->json([
+            'message' => 'User berhasil dihapus',
+            'success' => true
+        ]);
     }
 }

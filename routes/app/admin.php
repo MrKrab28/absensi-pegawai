@@ -6,6 +6,7 @@ use App\Models\StatusPegawai;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
+use App\Http\Controllers\Admin\AbsensiController;
 use App\Http\Controllers\Admin\JabatanController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\WorkTypeController;
@@ -78,4 +79,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/pegawai-shift/{pegawaiShift}/edit', [PegawaiShiftController::class, 'edit'])->name('pegawai-shift-edit');
     Route::put('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'update'])->name('pegawai-shift-update');
     Route::delete('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'destroy'])->name('pegawai-shift-delete');
+
+    Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi');
+    Route::post('/absensi/store', [AbsensiController::class, 'store'])->name('absensi-store');
+    Route::get('/absensi/{absensi}/edit', [AbsensiController::class, 'edit'])->name('absensi-edit');
+    Route::put('/absensi/{absensi}', [AbsensiController::class, 'update'])->name('absensi-update');
+    Route::delete('/absensi/{absensi}', [AbsensiController::class, 'destroy'])->name('absensi-delete');
 });

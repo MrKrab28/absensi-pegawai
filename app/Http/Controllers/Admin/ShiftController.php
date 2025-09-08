@@ -56,6 +56,6 @@ class ShiftController extends Controller
     public function destroy(Shift $shift)
     {
         $this->shiftService->delete($shift->id);
-        return back()->with('success', 'Berhasil menghapus Data');
+        return response()->json(['message' => 'Data berhasil dihapus', 'success' => true]);
     }
 }

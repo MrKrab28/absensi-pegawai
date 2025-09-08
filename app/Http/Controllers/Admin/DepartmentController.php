@@ -55,6 +55,6 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $this->departmentService->delete($department->id);
-        return back()->with('success', 'Berhasil menghapus Data');
+        return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
     }
 }

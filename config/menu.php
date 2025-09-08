@@ -22,7 +22,7 @@ return [
                     'route-active' => 'absensi',
                     'label' => 'Attendance',
                     'icon' => 'calendar-user',
-                    'route-name' => null,
+                    'route-name' => 'admin.absensi',
                 ],
                 [
                     'route-active' => 'shift-kerja',
