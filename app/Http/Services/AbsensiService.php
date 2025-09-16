@@ -1,40 +1,52 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\http\Services;
 
 use App\Http\Repositories\AbsensiRepository;
+use Illuminate\Support\Facades\Storage;
 
 class AbsensiService
 {
-    protected $AbsensiRepository;
+    protected $repository;
 
-    public function __construct(AbsensiRepository $AbsensiRepository)
+    public function __construct(AbsensiRepository $repository)
     {
-        $this->AbsensiRepository = $AbsensiRepository;
+        $this->repository = $repository;
     }
 
-    public function getAll()
+    public function absenMasuk(array $data)
     {
-        return $this->AbsensiRepository->getAll();
+        $filename = null;
+        $dayDate = now()->translatedFormat('l-Y-m-d');
+        if (isset($data['foto'])) {
+            $file = $data['foto'];
+            $filename = 'absensi-' . $data['pegawai_id'] . '-' . $dayDate . '-' . time() . '.' . $file->extension();
+            $file->move(public_path('img/absensi'), $filename);
+        }
+
+
+
+        return $this->repository->create([
+            'pegawai_id'  => $data['pegawai_id'],
+            'shift_id'    => $data['shift_id'],
+            'waktu_masuk' => now(),
+            'foto'        => $filename ?? null,
+            'longitude'   => $data['longitude'] ?? null,
+            'latitude'    => $data['latitude'] ?? null,
+            'status'      => 'hadir',
+        ]);
     }
 
-    public function getById($id)
+    public function absenKeluar($pegawaiId, $shiftId)
     {
-        return $this->AbsensiRepository->getById($id);
-    }
+        $absensi = $this->repository->findByPegawaiAndShift($pegawaiId, $shiftId);
 
-    public function create(array $data)
-    {
-        return $this->AbsensiRepository->create($data);
-    }
+        if (!$absensi) {
+            return null;
+        }
 
-    public function update($id, array $data)
-    {
-        return $this->AbsensiRepository->update($id, $data);
-    }
-
-    public function delete($id)
-    {
-        return $this->AbsensiRepository->delete($id);
+        return $this->repository->update($absensi, [
+            'waktu_keluar' => now(),
+        ]);
     }
 }

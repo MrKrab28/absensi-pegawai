@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Services\AbsensiService;
 
 class AbsensiController extends Controller
@@ -17,49 +18,48 @@ class AbsensiController extends Controller
 
     public function index()
     {
+        return view('pages.admin.absensi');
+    }
+    public function absenMasuk(Request $request)
+    {
+        $request->validate([
+            'shift_id'  => 'required|exists:shift,id',
+            'foto'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'longitude' => 'nullable|numeric',
+            'latitude'  => 'nullable|numeric',
+        ]);
 
-        return view('pages.admin.absensi', [
-            'absensis' => $this->absensiService->getAll()
+        $data = [
+            'pegawai_id' => Auth::id(),
+            'shift_id'   => $request->shift_id,
+            'foto'       => $request->file('foto'),
+            'longitude'  => $request->longitude,
+            'latitude'   => $request->latitude,
+        ];
+
+        $absensi = $this->absensiService->absenMasuk($data);
+
+        return response()->json([
+            'message' => 'Absensi masuk berhasil dicatat',
+            'data'    => $absensi,
         ]);
     }
 
-    public function store(Request $request)
+    public function absenKeluar(Request $request)
     {
-        $data = $request->validate([
-            'pegawai_id' => 'required',
-            'shift_id' => 'required',
-            'tanggal' => 'required',
-            'foto' => 'required',
-            'status' => 'required',
+        $request->validate([
+            'shift_id' => 'required|exists:shift,id',
         ]);
 
-        $this->absensiService->create($data);
-        return back()->with('success', 'Berhasil menambah Data');
-    }
+        $absensi = $this->absensiService->absenKeluar(Auth::id(), $request->shift_id);
 
-public function edit(Absensi $absensi)
-    {
-        return view('pages.admin.absensi.edit', [
-            'absensi' => $absensi
+        if (!$absensi) {
+            return response()->json(['message' => 'Absensi masuk belum ada'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Absensi keluar berhasil dicatat',
+            'data'    => $absensi,
         ]);
-    }
-
-    public function update(Request $request, Absensi $absensi)
-    {
-        $data = $request->validate([
-            'pegawai_id' => 'required',
-            'shift_id' => 'required',
-            'tanggal' => 'required',
-            'foto' => 'required',
-            'status' => 'required',
-        ]);
-        $this->absensiService->update($absensi->id, $data);
-        return back()->with('success', 'Berhasil mengupdate Data');
-    }
-
-    public function destroy(Absensi $absensi)
-    {
-        $this->absensiService->delete($absensi->id);
-        return back()->with('success', 'Berhasil menghapus Data');
     }
 }
