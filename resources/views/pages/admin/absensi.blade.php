@@ -3,10 +3,10 @@
     <div class="container">
         <h2>Absensi</h2>
 
-        {{-- Absen Masuk --}}
-        <form action="{{ route('absensi.masuk') }}" method="POST" enctype="multipart/form-data">
+
+        <form action="{{ route('admin.absensi-masuk') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="shift_id" value="1"> {{-- nanti sesuaikan dengan shift aktif --}}
+            <input type="hidden" name="shift_id" value="1">
             <input type="hidden" name="longitude" id="longitude">
             <input type="hidden" name="latitude" id="latitude">
 
@@ -20,10 +20,10 @@
 
         <hr>
 
-        {{-- Absen Keluar --}}
-        <form action="{{ route('absensi.keluar') }}" method="POST">
+
+        <form action="{{ route('admin.absensi-keluar') }}" method="POST">
             @csrf
-            <input type="hidden" name="shift_id" value="1"> {{-- nanti sesuaikan dengan shift aktif --}}
+            <input type="hidden" name="shift_id" value="1">
             <button type="submit" class="btn btn-danger">Absen Keluar</button>
         </form>
     </div>

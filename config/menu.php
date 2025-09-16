@@ -25,6 +25,18 @@ return [
                     'route-name' => 'admin.absensi',
                 ],
                 [
+                    'route-active' => 'absensi-masuk',
+                    'label' => 'Check-in',
+                    'icon' => 'calendar-up',
+                    'route-name' => 'admin.absensi-masuk',
+                ],
+                [
+                    'route-active' => 'absensi-keluar',
+                    'label' => 'Check-out',
+                    'icon' => 'calendar-down',
+                    'route-name' => 'admin.absensi-keluar',
+                ],
+                [
                     'route-active' => 'shift-kerja',
                     'label' => 'Employee Shifts',
                     'icon' => 'calendar-stats',

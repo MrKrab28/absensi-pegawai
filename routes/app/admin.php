@@ -80,7 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::put('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'update'])->name('pegawai-shift-update');
     Route::delete('/pegawai-shift/{pegawaiShift}', [PegawaiShiftController::class, 'destroy'])->name('pegawai-shift-delete');
 
-    Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.index');
-    Route::post('/absensi/masuk', [AbsensiController::class, 'absenMasuk'])->name('absensi.masuk');
-    Route::post('/absensi/keluar', [AbsensiController::class, 'absenKeluar'])->name('absensi.keluar');
+    Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi');
+    Route::post('/absensi/masuk', [AbsensiController::class, 'absenMasuk'])->name('absensi-masuk');
+    Route::post('/absensi/keluar', [AbsensiController::class, 'absenKeluar'])->name('absensi-keluar');
 });
