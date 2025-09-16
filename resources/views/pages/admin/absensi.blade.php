@@ -39,4 +39,24 @@
     </script>
 
 
+    <script>
+        // Ambil lokasi otomatis
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    document.getElementById('longitude').value = position.coords.longitude;
+                    document.getElementById('latitude').value = position.coords.latitude;
+                },
+                function(error) {
+                    alert('Lokasi tidak bisa diambil, pastikan GPS aktif.');
+                }, {
+                    enableHighAccuracy: true, // GPS akurat
+                    timeout: 5000, // 5 detik timeout
+                    maximumAge: 0
+                }
+            );
+        } else {
+            alert("Browser tidak mendukung GPS");
+        }
+    </script>
 </x-admin.layout>
