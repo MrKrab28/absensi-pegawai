@@ -32,4 +32,12 @@ class AbsensiRepository
     {
         return Absensi::destroy($id);
     }
+    public function findByPegawaiAndShift($pegawaiId, $shiftId)
+    {
+        $model = Absensi::where('pegawai_id', $pegawaiId)
+            ->where('shift_id', $shiftId)
+            ->first();
+
+        return $model;
+    }
 }

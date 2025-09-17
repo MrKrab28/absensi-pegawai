@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use user;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Services\AbsensiService;
 
 class AbsensiController extends Controller
@@ -17,49 +19,78 @@ class AbsensiController extends Controller
 
     public function index()
     {
-
-        return view('pages.admin.absensi', [
-            'absensis' => $this->absensiService->getAll()
-        ]);
+        return view('pages.admin.absensi');
     }
-
-    public function store(Request $request)
+    public function absenMasuk(Request $request)
     {
-        $data = $request->validate([
-            'pegawai_id' => 'required',
-            'shift_id' => 'required',
-            'tanggal' => 'required',
-            'foto' => 'required',
-            'status' => 'required',
+        $request->validate([
+            'foto' => 'required|image|max:2048',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
-        $this->absensiService->create($data);
-        return back()->with('success', 'Berhasil menambah Data');
-    }
+        // ambil setting dari config
+        $officeLat = -5.103468;
+        $officeLng = 119.527957;
+        $radiusAllowed = 100;
 
-public function edit(Absensi $absensi)
-    {
-        return view('pages.admin.absensi.edit', [
-            'absensi' => $absensi
+
+        $userLat = $request->latitude;
+        $userLng = $request->longitude;
+
+        $distance = $this->haversineGreatCircleDistance($officeLat, $officeLng, $userLat, $userLng);
+
+        if ($distance > $radiusAllowed) {
+            return back()->withErrors(['lokasi' => 'Anda berada di luar radius absensi (' . round($distance) . ' m)']);
+        }
+
+        // simpan foto
+        $filename = 'absensi-' . date('Ymd-His') . '.' . $request->file('foto')->extension();
+        $path = $request->file('foto')->storeAs('absensi', $filename, 'public');
+
+        Absensi::create([
+            'pegawai_id' => Auth::id(),
+            'shift_id'   => $request->shift_id,
+            'foto'       => $path,
+            'latitude'   => $userLat,
+            'longitude'  => $userLng,
+            'status'     => 'hadir',
+            'waktu_masuk' => now(),
         ]);
+
+        return back()->with('success', 'Absensi berhasil!');
     }
 
-    public function update(Request $request, Absensi $absensi)
+    private function haversineGreatCircleDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000)
     {
-        $data = $request->validate([
-            'pegawai_id' => 'required',
-            'shift_id' => 'required',
-            'tanggal' => 'required',
-            'foto' => 'required',
-            'status' => 'required',
+        $latFrom = deg2rad($latitudeFrom);
+        $lonFrom = deg2rad($longitudeFrom);
+        $latTo = deg2rad($latitudeTo);
+        $lonTo = deg2rad($longitudeTo);
+
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
+
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        return $angle * $earthRadius;
+    }
+
+    public function absenKeluar(Request $request)
+    {
+        $request->validate([
+            'shift_id' => 'required|exists:shift,id',
         ]);
-        $this->absensiService->update($absensi->id, $data);
-        return back()->with('success', 'Berhasil mengupdate Data');
-    }
 
-    public function destroy(Absensi $absensi)
-    {
-        $this->absensiService->delete($absensi->id);
-        return back()->with('success', 'Berhasil menghapus Data');
+        $absensi = $this->absensiService->absenKeluar(Auth::id(), $request->shift_id);
+
+        if (!$absensi) {
+            return response()->json(['message' => 'Absensi masuk belum ada'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Absensi keluar berhasil dicatat',
+            'data'    => $absensi,
+        ]);
     }
 }
