@@ -2,6 +2,7 @@ import "./jquery";
 import "./bootstrap";
 import "./sidebarmenu";
 import "flowbite";
+import "preline";
 import "./sweetalert";
 import "./simplebar";
 import "./selectTom";

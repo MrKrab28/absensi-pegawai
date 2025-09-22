@@ -27,7 +27,20 @@
             <button type="submit" class="btn btn-danger">Absen Keluar</button>
         </form>
     </div>
+    <button id="btnLat">Ambil Latitude</button>
+    <p id="result"></p>
 
+    <script>
+        document.getElementById("btnLat").addEventListener("click", function() {
+            alert("Tombol terklik, coba ambil lokasi...");
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById("result").innerText =
+                    "Latitude: " + position.coords.latitude;
+            }, function(err) {
+                alert("Error code: " + err.code);
+            });
+        });
+    </script>
     <script>
         // Ambil lokasi otomatis
         if (navigator.geolocation) {
