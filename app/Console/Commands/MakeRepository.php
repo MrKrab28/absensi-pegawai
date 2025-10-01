@@ -90,7 +90,7 @@ PHP;
 
 namespace App\Http\Services;
 
-use App\Repositories\\{$name}Repository;
+use App\Http\Repositories\\{$name}Repository;
 
 class {$name}Service
 {

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->text('keterangan');
             $table->enum('status', ['accept', 'on-progress', 'done'])->default('accept');
             $table->foreignId('pegawai_id');
+            $table->date('tanggal');
+            
             $table->timestamps();       
+
 
 
             $table->foreign('pegawai_id')->references('id')->on('pegawai')->onDelete('cascade');
