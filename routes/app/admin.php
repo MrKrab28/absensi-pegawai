@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\PegawaiShiftController;
 use App\Http\Controllers\Admin\StatusPegawaiController;
+use App\Http\Controllers\Admin\AsetController;
 
 // Route::get('/', function () {
 //     return view('pages.admin.dashboard');
@@ -83,4 +84,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi');
     Route::post('/absensi/masuk', [AbsensiController::class, 'absenMasuk'])->name('absensi-masuk');
     Route::post('/absensi/keluar', [AbsensiController::class, 'absenKeluar'])->name('absensi-keluar');
+
+
+    // ASET
+    Route::get('/aset', [AsetController::class, 'index'])->name('aset');
+    Route::post('/aset/store', [AsetController::class, 'store'])->name('aset-store');
+    Route::get('/aset/{aset}/edit', [AsetController::class, 'edit'])->name('aset-edit');
+    Route::put('/aset/{aset}', [AsetController::class, 'update'])->name('aset-update');
+    Route::delete('/aset/{aset}', [AsetController::class, 'destroy'])->name('aset-delete');
 });

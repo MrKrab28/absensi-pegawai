@@ -51,6 +51,13 @@ return [
             'title' => 'Master',
             'items' => [
                 [
+                    'route-active' => 'asets',
+                    'label' => 'Assets Calibration',
+                    'icon' => 'settings-cog',
+                    'route-name' => 'admin.aset',
+
+                ],
+                [
                     'route-active' => 'users',
                     'label' => 'Users',
                     'icon' => 'users',
