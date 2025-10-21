@@ -46,7 +46,7 @@ class AsetController extends Controller
         $data = $request->all();
         $aset = Aset::find($aset->id);
         $aset->update($data);
-        return view('pages.admin.aset-update');
+        return redirect()->back()->with('success', 'Berhasil mengupdate Data');
     }
 
     public function destroy(Aset $aset)
