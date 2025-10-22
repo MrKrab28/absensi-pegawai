@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Aset;
+use App\Exports\AssetsExport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AsetController extends Controller
 {
@@ -32,6 +34,30 @@ class AsetController extends Controller
 
         Aset::create($data);
         return back()->with('success', 'Berhasil menambah Data');
+    }
+
+    public function export(Request $request)
+    {
+        $query = Aset::query();
+
+        // Terapkan filter dari query string
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+
+        // Ambil data hasil filter
+        $filteredAssets = $query->get();
+
+        // Ekspor ke Excel dengan data hasil filter
+        return Excel::download(new AssetsExport($filteredAssets), 'data_aset.xlsx');
     }
 
     public function edit(Aset $aset)

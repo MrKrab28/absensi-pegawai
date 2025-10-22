@@ -92,4 +92,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin'], 'as' => 'admi
     Route::get('/aset/{aset}/edit', [AsetController::class, 'edit'])->name('aset-edit');
     Route::put('/aset/{aset}', [AsetController::class, 'update'])->name('aset-update');
     Route::delete('/aset/{aset}', [AsetController::class, 'destroy'])->name('aset-delete');
+
+    // Export
+    Route::get('/export', [AsetController::class, 'export'])->name('export-aset');
 });

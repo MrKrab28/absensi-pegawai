@@ -8,40 +8,47 @@
                     </div>
                     <div class="col-md-6">
 
-                        <x-form.modal id="asetModal" title="Tambah aset" label="Tambah Data" size="large"
-                            action="{{ route('admin.aset-store') }}">
+                        <div class="d-flex gap-3 justify-content-end align-items-center">
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <x-form.input id="kode" label="Kode" name="kode" :required="true" />
-                                    <x-form.input id="name" label="Nama" name="nama" :required="true" />
-                                    <x-form.input id="merk" label="Merk" name="merk" :required="true" />
-                                    <x-form.select-tom id="status" name="status" label="Status" :required="true">
-                                        <option value="">-- Pilih Status --</option>
-                                        <option value="laik">Laik</option>
-                                        <option value="tidak laik">Tidak Laik</option>
-                                    </x-form.select-tom>
+                            <x-form.modal id="asetModal" title="Tambah aset" label="Tambah Data" size="large"
+                                action="{{ route('admin.aset-store') }}">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <x-form.input id="kode" label="Kode" name="kode" :required="true" />
+                                        <x-form.input id="name" label="Nama" name="nama" :required="true" />
+                                        <x-form.input id="merk" label="Merk" name="merk" :required="true" />
+                                        <x-form.select-tom id="status" name="status" label="Status"
+                                            :required="true">
+                                            <option value="">-- Pilih Status --</option>
+                                            <option value="laik">Laik</option>
+                                            <option value="tidak laik">Tidak Laik</option>
+                                        </x-form.select-tom>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <x-form.input id="type" label="Type" name="type" :required="true" />
+                                        <x-form.input id="no_seri" label="No Seri" name="no_seri" :required="true" />
+                                        <x-form.input id="lokasi" label="Lokasi" name="lokasi" :required="true" />
+                                        <x-form.input id="waktu_kalibrasi" type="date" label="Tanggal Kalibrasi"
+                                            name="waktu_kalibrasi" :required="true" />
+
+
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-
-                                    <x-form.input id="type" label="Type" name="type" :required="true" />
-                                    <x-form.input id="no_seri" label="No Seri" name="no_seri" :required="true" />
-                                    <x-form.input id="lokasi" label="Lokasi" name="lokasi" :required="true" />
-                                    <x-form.input id="waktu_kalibrasi" type="date" label="Tanggal Kalibrasi"
-                                        name="waktu_kalibrasi" :required="true" />
-
-
-                                </div>
-                            </div>
 
 
 
 
 
 
-                        </x-form.modal>
+                            </x-form.modal>
+                        </div>
                     </div>
                 </div>
+                <x-component.button-icon class="ms-5 me-5 height-6" label="export" type="button"
+                    href="{{ route('admin.export-aset') }}" color="success" icon="file-type-xls" />
+
             </div>
             <div class="relative overflow-x-auto pt-3">
 
